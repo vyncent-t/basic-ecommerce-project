@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
   Product.findAll({
-    attributes: ['id', 'product_name', 'price', 'color'],
+    attributes: ['id', 'product_name', 'price'],
     include: [{
       model: Category,
       attributes: ['category_name']
@@ -33,7 +33,7 @@ router.get('/:id', (req, res) => {
     where: {
       id: req.params.id
     },
-    attributes: ['id', 'product_name', 'price', 'color'],
+    attributes: ['id', 'product_name', 'price'],
     include: [{
       model: Category,
       attributes: ['category_name']
@@ -55,7 +55,6 @@ router.post('/', (req, res) => {
   Product.create({
     product_name: req.body.product_name,
     price: req.body.price,
-    color: req.body.color,
     category_id: req.body.category_id,
     tagIds: req.body.tagIds
   }).then((product) => {
