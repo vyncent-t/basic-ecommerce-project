@@ -4,20 +4,14 @@ require('dotenv').config();
 
 const mysql = require('mysql2');
 
-// create the connection to database
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: process.env.DB_USER,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PW
-});
+
 
 
 // import sequelize connection
 const sequelize = require('./config/connection')
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
